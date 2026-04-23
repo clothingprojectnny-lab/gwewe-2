@@ -56,7 +56,7 @@ h2 { font-size: 18px; }
 h3 { font-size: 15px; font-weight: bold; }
 
 /* ==============================
-   DMV PAGE STRUCTURE
+   PAGE STRUCTURE
    ============================== */
 
 .dmv-page {
@@ -147,7 +147,7 @@ h3 { font-size: 15px; font-weight: bold; }
 }
 
 /* ==============================
-   CARD SYSTEM
+   CARDS
    ============================== */
 
 .dmv-card {
@@ -169,6 +169,10 @@ h3 { font-size: 15px; font-weight: bold; }
   color: var(--dmv-blue);
   font-family: Georgia, serif;
   font-size: 18px;
+}
+
+.dmv-card-body {
+  /* used when card has separate header/body structure */
 }
 
 /* ==============================
@@ -213,6 +217,21 @@ h3 { font-size: 15px; font-weight: bold; }
   cursor: not-allowed;
 }
 
+.dmv-link-button {
+  background: none;
+  border: none;
+  color: var(--dmv-link);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.dmv-link-button:hover {
+  color: var(--dmv-blue-dark);
+}
+
 /* ==============================
    FORM ELEMENTS
    ============================== */
@@ -248,6 +267,10 @@ h3 { font-size: 15px; font-weight: bold; }
   color: var(--dmv-red);
 }
 
+.dmv-field {
+  margin-bottom: 16px;
+}
+
 /* ==============================
    TABLES
    ============================== */
@@ -281,7 +304,7 @@ h3 { font-size: 15px; font-weight: bold; }
 }
 
 /* ==============================
-   NOTICE SYSTEM (V2 style)
+   NOTICE SYSTEM
    ============================== */
 
 .dmv-notice {
@@ -315,7 +338,7 @@ h3 { font-size: 15px; font-weight: bold; }
 }
 
 /* ==============================
-   STATUS BADGES (V2 style)
+   STATUS BADGES
    ============================== */
 
 .dmv-status {
@@ -406,10 +429,6 @@ h3 { font-size: 15px; font-weight: bold; }
    UTILITY
    ============================== */
 
-.dmv-field {
-  margin-bottom: 16px;
-}
-
 .dmv-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -437,21 +456,6 @@ h3 { font-size: 15px; font-weight: bold; }
 
 .dmv-breadcrumb a { color: var(--dmv-link); }
 .dmv-breadcrumb span { margin: 0 6px; color: #999; }
-
-.dmv-link-button {
-  background: none;
-  border: none;
-  color: var(--dmv-link);
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: 12px;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-.dmv-link-button:hover {
-  color: var(--dmv-blue-dark);
-}
 
 /* ==============================
    RESPONSIVE
