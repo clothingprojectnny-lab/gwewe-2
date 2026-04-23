@@ -6,17 +6,17 @@ export default async function CustomersPage() {
   const customers = await getCustomers()
 
   return (
-    <div className="portal-card">
-      <div className="portal-card-header">
+    <div className="dmv-card">
+      <div className="dmv-card-header">
         <h2>Member Records</h2>
       </div>
-      <div className="portal-card-body">
+      <div className="dmv-card-body">
         {customers.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: 40, color: 'var(--portal-text-faint)' }}>
+          <div style={{ textAlign: 'center', padding: 40, color: 'var(--dmv-grey-dark)' }}>
             No member records.
           </div>
         ) : (
-          <table className="portal-table">
+          <table className="dmv-table">
             <thead>
               <tr>
                 <th>Name</th>

@@ -7,17 +7,17 @@ export default async function OrdersPage() {
   const orders = await getAllOrders()
 
   return (
-    <div className="portal-card">
-      <div className="portal-card-header">
+    <div className="dmv-card">
+      <div className="dmv-card-header">
         <h2>Order Management</h2>
       </div>
-      <div className="portal-card-body">
+      <div className="dmv-card-body">
         {orders.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: 40, color: 'var(--portal-text-faint)' }}>
+          <div style={{ textAlign: 'center', padding: 40, color: 'var(--dmv-grey-dark)' }}>
             No orders in system.
           </div>
         ) : (
-          <table className="portal-table">
+          <table className="dmv-table">
             <thead>
               <tr>
                 <th>Reference</th>
@@ -31,12 +31,12 @@ export default async function OrdersPage() {
             <tbody>
               {orders.map(order => (
                 <tr key={order.id}>
-                  <td className="portal-ref" style={{ fontWeight: 600 }}>{order.id}</td>
+                  <td className="dmv-ref" style={{ fontWeight: 600 }}>{order.id}</td>
                   <td>{order.shipping.name}</td>
                   <td>${(order.total / 100).toFixed(2)}</td>
                   <td style={{ fontSize: 10 }}>{new Date(order.createdAt).toLocaleDateString('en-US')}</td>
-                  <td><span className={`portal-status portal-status-${order.status}`}>{order.status}</span></td>
-                  <td><Link href={`/admin/orders/${order.id}`} className="portal-btn" style={{ fontSize: 9, padding: '4px 10px' }}>View</Link></td>
+                  <td><span className={`dmv-status dmv-status-${order.status}`}>{order.status}</span></td>
+                  <td><Link href={`/admin/orders/${order.id}`} className="dmv-button" style={{ fontSize: 9, padding: '4px 10px' }}>View</Link></td>
                 </tr>
               ))}
             </tbody>

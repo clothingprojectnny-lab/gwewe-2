@@ -45,26 +45,26 @@ export default function OrderDetailPage() {
     setSaving(false)
   }
 
-  if (!order) return <div className="portal-card"><div className="portal-card-body"><p>Loading...</p></div></div>
+  if (!order) return <div className="dmv-card"><div className="dmv-card-body"><p>Loading...</p></div></div>
 
   return (
     <>
-      <div className="portal-breadcrumb">
+      <div className="dmv-breadcrumb">
         <Link href="/admin/orders">Orders</Link>
         <span>›</span>
-        <span style={{ color: 'var(--portal-text-muted)' }}>{order.id}</span>
+        <span style={{ color: 'var(--dmv-grey-dark)' }}>{order.id}</span>
       </div>
 
-      <div className="portal-card">
-        <div className="portal-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="dmv-card">
+        <div className="dmv-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h2>Order {order.id}</h2>
-          <span className={`portal-status portal-status-${order.status}`}>{order.status}</span>
+          <span className={`dmv-status dmv-status-${order.status}`}>{order.status}</span>
         </div>
-        <div className="portal-card-body">
-          <div className="portal-grid-2">
+        <div className="dmv-card-body">
+          <div className="dmv-row">
             <div>
-              <div className="portal-label" style={{ marginBottom: 8 }}>Items</div>
-              <table className="portal-table">
+              <div className="dmv-label" style={{ marginBottom: 8 }}>Items</div>
+              <table className="dmv-table">
                 <thead><tr><th>Item</th><th style={{ width: 50 }}>Size</th><th style={{ width: 80, textAlign: 'right' }}>Value</th></tr></thead>
                 <tbody>
                   {order.cart.map((item, i) => (
@@ -72,42 +72,42 @@ export default function OrderDetailPage() {
                   ))}
                 </tbody>
               </table>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 14px', background: 'var(--portal-bg)', border: '1px solid var(--portal-border)', borderTop: 'none', fontWeight: 600 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 14px', background: 'var(--dmv-grey-light)', border: '1px solid var(--dmv-border)', borderTop: 'none', fontWeight: 600 }}>
                 <span>Total</span><span>${(order.total / 100).toFixed(2)}</span>
               </div>
             </div>
 
             <div>
-              <div className="portal-label" style={{ marginBottom: 8 }}>Dispatch Address</div>
-              <table className="portal-table">
+              <div className="dmv-label" style={{ marginBottom: 8 }}>Dispatch Address</div>
+              <table className="dmv-table">
                 <tbody>
-                  <tr><td style={{ fontWeight: 600, width: 90, background: 'var(--portal-bg)' }}>Name</td><td>{order.shipping.name}</td></tr>
-                  <tr><td style={{ fontWeight: 600, background: 'var(--portal-bg)' }}>Email</td><td>{order.shipping.email}</td></tr>
-                  <tr><td style={{ fontWeight: 600, background: 'var(--portal-bg)' }}>Address</td><td>{order.shipping.address}</td></tr>
-                  <tr><td style={{ fontWeight: 600, background: 'var(--portal-bg)' }}>City</td><td>{order.shipping.city}</td></tr>
-                  <tr><td style={{ fontWeight: 600, background: 'var(--portal-bg)' }}>Postcode</td><td>{order.shipping.postcode}</td></tr>
-                  <tr><td style={{ fontWeight: 600, background: 'var(--portal-bg)' }}>Country</td><td>{order.shipping.country}</td></tr>
+                  <tr><td style={{ fontWeight: 600, width: 90, background: 'var(--dmv-grey-light)' }}>Name</td><td>{order.shipping.name}</td></tr>
+                  <tr><td style={{ fontWeight: 600, background: 'var(--dmv-grey-light)' }}>Email</td><td>{order.shipping.email}</td></tr>
+                  <tr><td style={{ fontWeight: 600, background: 'var(--dmv-grey-light)' }}>Address</td><td>{order.shipping.address}</td></tr>
+                  <tr><td style={{ fontWeight: 600, background: 'var(--dmv-grey-light)' }}>City</td><td>{order.shipping.city}</td></tr>
+                  <tr><td style={{ fontWeight: 600, background: 'var(--dmv-grey-light)' }}>Postcode</td><td>{order.shipping.postcode}</td></tr>
+                  <tr><td style={{ fontWeight: 600, background: 'var(--dmv-grey-light)' }}>Country</td><td>{order.shipping.country}</td></tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          <div className="portal-divider" />
+          <div className="dmv-divider" />
 
-          <div className="portal-field">
-            <label className="portal-label">Tracking Reference</label>
+          <div className="dmv-field">
+            <label className="dmv-label">Tracking Reference</label>
             <div style={{ display: 'flex', gap: 8 }}>
-              <input value={tracking} onChange={e => setTracking(e.target.value)} placeholder="Enter tracking number" className="portal-input" style={{ flex: 1 }} />
-              <button onClick={saveTracking} disabled={saving} className="portal-btn">Save</button>
+              <input value={tracking} onChange={e => setTracking(e.target.value)} placeholder="Enter tracking number" className="dmv-input" style={{ flex: 1 }} />
+              <button onClick={saveTracking} disabled={saving} className="dmv-button">Save</button>
             </div>
           </div>
 
-          <div className="portal-field">
-            <label className="portal-label">Update Status</label>
+          <div className="dmv-field">
+            <label className="dmv-label">Update Status</label>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               {STATUSES.map(status => (
                 <button key={status} onClick={() => updateStatus(status)} disabled={saving || order.status === status}
-                  className={order.status === status ? 'portal-btn portal-btn-primary' : 'portal-btn'}
+                  className={order.status === status ? 'dmv-button dmv-button-primary' : 'dmv-button'}
                   style={{ textTransform: 'capitalize' }}>
                   {status}
                 </button>

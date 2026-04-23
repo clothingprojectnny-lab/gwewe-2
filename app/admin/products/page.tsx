@@ -7,20 +7,20 @@ export default async function ProductsPage() {
   const products = await getAllProducts()
 
   return (
-    <div className="portal-card">
-      <div className="portal-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div className="dmv-card">
+      <div className="dmv-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h2>Product Management</h2>
-        <Link href="/admin/products/new" className="portal-btn portal-btn-primary">
+        <Link href="/admin/products/new" className="dmv-button dmv-button-primary">
           + Add Product
         </Link>
       </div>
-      <div className="portal-card-body">
+      <div className="dmv-card-body">
         {products.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: 40, color: 'var(--portal-text-faint)' }}>
+          <div style={{ textAlign: 'center', padding: 40, color: 'var(--dmv-grey-dark)' }}>
             No products in system. Click &quot;Add Product&quot; to begin.
           </div>
         ) : (
-          <table className="portal-table">
+          <table className="dmv-table">
             <thead>
               <tr>
                 <th style={{ width: 60 }}>Image</th>
@@ -38,7 +38,7 @@ export default async function ProductsPage() {
                 return (
                   <tr key={product.id}>
                     <td style={{ padding: 4 }}>
-                      <div style={{ width: 40, height: 50, background: 'var(--portal-bg)', overflow: 'hidden', border: '1px solid var(--portal-border)' }}>
+                      <div style={{ width: 40, height: 50, background: 'var(--dmv-grey-light)', overflow: 'hidden', border: '1px solid var(--dmv-border)' }}>
                         {product.images?.[0] && (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img src={product.images[0]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -46,18 +46,18 @@ export default async function ProductsPage() {
                       </div>
                     </td>
                     <td style={{ fontWeight: 600 }}>{product.name}</td>
-                    <td className="portal-ref">{product.id.toUpperCase()}</td>
+                    <td className="dmv-ref">{product.id.toUpperCase()}</td>
                     <td>${(product.price / 100).toFixed(2)}</td>
                     <td>{totalStock}</td>
                     <td>
                       {product.active ? (
-                        <span className="portal-status portal-status-cleared">Visible</span>
+                        <span className="dmv-status dmv-status-cleared">Visible</span>
                       ) : (
-                        <span className="portal-status portal-status-withheld">Withheld</span>
+                        <span className="dmv-status dmv-status-withheld">Withheld</span>
                       )}
                     </td>
                     <td>
-                      <Link href={`/admin/products/${product.id}`} className="portal-btn" style={{ fontSize: 9, padding: '4px 10px' }}>
+                      <Link href={`/admin/products/${product.id}`} className="dmv-button" style={{ fontSize: 9, padding: '4px 10px' }}>
                         Edit
                       </Link>
                     </td>

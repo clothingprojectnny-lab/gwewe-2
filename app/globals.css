@@ -2,31 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap');
-
 :root {
-  --portal-blue: #1a4d80;
-  --portal-blue-dark: #0f3259;
-  --portal-blue-light: #3d7ec7;
-  --portal-blue-muted: #5a8bb8;
-  --portal-red: #b91c1c;
-  --portal-red-muted: #dc4a4a;
-  --portal-bg: #f2f0ec;
-  --portal-bg-warm: #eae7e0;
-  --portal-card: #ffffff;
-  --portal-border: #c4bfb6;
-  --portal-border-dark: #9e9889;
-  --portal-text: #2c2a26;
-  --portal-text-muted: #6b665c;
-  --portal-text-faint: #9e9889;
-  --portal-link: #1a4d80;
-  --portal-success: #2d6a30;
-  --portal-warning-bg: #fef9e7;
-  --portal-warning-border: #d4a017;
-  --portal-danger-bg: #fdf2f2;
-  --portal-danger-border: #b91c1c;
-  --portal-info-bg: #eef4fb;
-  --portal-info-border: #1a4d80;
+  --dmv-blue: #1e5a9e;
+  --dmv-blue-dark: #164478;
+  --dmv-blue-light: #4a7fb8;
+  --dmv-red: #c8102e;
+  --dmv-grey: #e8e8e8;
+  --dmv-grey-light: #f5f5f5;
+  --dmv-grey-dark: #666666;
+  --dmv-border: #cccccc;
+  --dmv-text: #333333;
+  --dmv-link: #1e5a9e;
+  --dmv-link-visited: #6b2a9e;
+  --dmv-success: #1b5e20;
 }
 
 * {
@@ -35,461 +23,434 @@
   padding: 0;
 }
 
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  background: var(--portal-bg);
-  color: var(--portal-text);
-  font-family: 'IBM Plex Mono', 'Courier New', monospace;
-  font-size: 12px;
-  line-height: 1.6;
-  letter-spacing: 0.01em;
-}
-
-::selection {
-  background: var(--portal-blue);
-  color: white;
+html, body {
+  background: var(--dmv-grey-light);
+  color: var(--dmv-text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 a {
-  color: var(--portal-link);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.15s;
+  color: var(--dmv-link);
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--dmv-link-visited);
 }
 
 a:hover {
-  border-bottom-color: var(--portal-link);
+  color: var(--dmv-blue-dark);
 }
+
+h1, h2, h3, h4 {
+  color: var(--dmv-blue);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: normal;
+  margin-bottom: 12px;
+}
+
+h1 { font-size: 22px; }
+h2 { font-size: 18px; }
+h3 { font-size: 15px; font-weight: bold; }
 
 /* ==============================
-   PORTAL STRUCTURE
+   DMV PAGE STRUCTURE
    ============================== */
 
-.portal-page {
+.dmv-page {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background: var(--dmv-grey-light);
 }
 
-/* Top classification bar */
-.portal-classification-bar {
-  background: var(--portal-blue-dark);
-  color: rgba(255,255,255,0.6);
-  font-size: 9px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 5px 0;
-  font-family: 'IBM Plex Mono', monospace;
+.dmv-header {
+  background: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 100%);
+  border-bottom: 4px solid var(--dmv-red);
+  padding: 16px 0;
 }
 
-/* Header */
-.portal-header {
-  background: var(--portal-card);
-  border-bottom: 3px solid var(--portal-blue);
-  padding: 20px 0;
-}
-
-.portal-header-inner {
-  max-width: 1060px;
+.dmv-header-inner {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-.portal-logo {
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--portal-blue-dark);
-  letter-spacing: 6px;
+.dmv-logo {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  color: var(--dmv-blue);
+  letter-spacing: -1px;
   text-decoration: none;
-  border-bottom: none;
 }
 
-.portal-logo:hover { border-bottom: none; }
+.dmv-logo:visited { color: var(--dmv-blue); }
 
-.portal-logo-sub {
-  display: block;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
+.dmv-logo-sub {
+  color: var(--dmv-blue-light);
+  font-size: 18px;
+  margin-left: 8px;
   letter-spacing: 3px;
-  color: var(--portal-text-muted);
-  text-transform: uppercase;
+}
+
+.dmv-tagline {
+  color: var(--dmv-grey-dark);
+  font-size: 11px;
   margin-top: 4px;
-  font-weight: 400;
 }
 
-.portal-header-ref {
-  font-size: 9px;
-  color: var(--portal-text-faint);
-  letter-spacing: 1px;
-  text-align: right;
+.dmv-top-bar {
+  background: var(--dmv-blue);
+  height: 6px;
 }
 
-/* Red accent bar */
-.portal-accent-bar {
-  height: 4px;
-  background: var(--portal-red);
-}
-
-/* Navigation */
-.portal-nav {
-  background: var(--portal-blue-dark);
+.dmv-nav {
+  background: var(--dmv-grey);
+  border-bottom: 1px solid var(--dmv-border);
   padding: 0;
 }
 
-.portal-nav-inner {
-  max-width: 1060px;
+.dmv-nav-inner {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
   display: flex;
-  gap: 1px;
+  gap: 2px;
 }
 
-.portal-nav a {
+.dmv-nav a {
   display: block;
-  padding: 10px 20px;
-  color: rgba(255,255,255,0.7);
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  padding: 10px 24px;
+  background: linear-gradient(to bottom, var(--dmv-blue-light), var(--dmv-blue));
+  color: white;
   text-decoration: none;
-  border-bottom: none;
-  border-right: 1px solid rgba(255,255,255,0.08);
-  transition: background 0.15s, color 0.15s;
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border-right: 1px solid var(--dmv-blue-dark);
 }
 
-.portal-nav a:hover {
-  background: rgba(255,255,255,0.06);
+.dmv-nav a:hover, .dmv-nav a.active {
+  background: linear-gradient(to bottom, var(--dmv-blue-dark), #0d3257);
   color: white;
-  border-bottom: none;
 }
 
-.portal-nav a.active {
-  color: white;
-  background: rgba(255,255,255,0.08);
-  border-bottom: 2px solid var(--portal-red);
-}
+.dmv-nav a:visited { color: white; }
 
-/* Container */
-.portal-container {
-  max-width: 1060px;
-  margin: 24px auto;
-  padding: 0 24px;
-  flex: 1;
+.dmv-container {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 20px;
 }
 
 /* ==============================
    CARD SYSTEM
    ============================== */
 
-.portal-card {
-  background: var(--portal-card);
-  border: 1px solid var(--portal-border);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+.dmv-card {
+  background: white;
+  border: 1px solid var(--dmv-border);
+  padding: 24px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
-.portal-card-header {
+.dmv-card-header {
+  background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+  border-bottom: 2px solid var(--dmv-blue);
   padding: 12px 20px;
-  border-bottom: 2px solid var(--portal-blue);
-  background: var(--portal-bg-warm);
+  margin: -24px -24px 20px;
 }
 
-.portal-card-header h2 {
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--portal-blue-dark);
-  letter-spacing: 0.5px;
+.dmv-card-header h2 {
   margin: 0;
-}
-
-.portal-card-body {
-  padding: 20px;
-}
-
-/* ==============================
-   FORM ELEMENTS
-   ============================== */
-
-.portal-input {
-  width: 100%;
-  padding: 7px 10px;
-  border: 1px solid var(--portal-border-dark);
-  background: var(--portal-card);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  color: var(--portal-text);
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-.portal-input:focus {
-  outline: none;
-  border-color: var(--portal-blue);
-  box-shadow: 0 0 0 2px rgba(26, 77, 128, 0.12);
-}
-
-.portal-input::placeholder {
-  color: var(--portal-text-faint);
-}
-
-.portal-label {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--portal-text-muted);
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-.portal-label-required::after {
-  content: ' ✱';
-  color: var(--portal-red);
-  font-size: 8px;
-}
-
-.portal-field {
-  margin-bottom: 16px;
+  color: var(--dmv-blue);
+  font-family: Georgia, serif;
+  font-size: 18px;
 }
 
 /* ==============================
    BUTTONS
    ============================== */
 
-.portal-btn {
+.dmv-button {
   display: inline-block;
-  padding: 8px 18px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  border: 1px solid var(--portal-border-dark);
-  background: var(--portal-card);
-  color: var(--portal-text);
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
+  background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 6px 16px;
+  color: var(--dmv-text);
+  font-size: 12px;
+  font-family: Arial, sans-serif;
   text-decoration: none;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
 }
 
-.portal-btn:hover {
-  background: var(--portal-bg);
-  border-color: var(--portal-text-muted);
-  border-bottom: 1px solid var(--portal-text-muted);
+.dmv-button:hover {
+  background: linear-gradient(to bottom, #f5f5f5 0%, #d5d5d5 100%);
+  color: var(--dmv-text);
 }
 
-.portal-btn-primary {
-  background: var(--portal-blue-dark);
-  border-color: var(--portal-blue-dark);
+.dmv-button-primary {
+  background: linear-gradient(to bottom, var(--dmv-blue-light) 0%, var(--dmv-blue) 100%);
+  border: 1px solid var(--dmv-blue-dark);
+  color: white;
+  font-weight: bold;
+}
+
+.dmv-button-primary:hover {
+  background: linear-gradient(to bottom, var(--dmv-blue) 0%, var(--dmv-blue-dark) 100%);
   color: white;
 }
 
-.portal-btn-primary:hover {
-  background: var(--portal-blue);
-  border-color: var(--portal-blue);
-  color: white;
-  border-bottom-color: var(--portal-blue);
-}
+.dmv-button-primary:visited { color: white; }
 
-.portal-btn:disabled {
-  opacity: 0.35;
+.dmv-button:disabled, .dmv-button-primary:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-.portal-btn-link {
-  background: none;
-  border: none;
-  color: var(--portal-link);
-  cursor: pointer;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  padding: 0;
-  border-bottom: 1px solid transparent;
-  text-decoration: none;
-  transition: border-color 0.15s;
+/* ==============================
+   FORM ELEMENTS
+   ============================== */
+
+.dmv-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #999;
+  border-radius: 2px;
+  background: white;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: var(--dmv-text);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
 
-.portal-btn-link:hover {
-  border-bottom-color: var(--portal-link);
+.dmv-input:focus {
+  outline: none;
+  border-color: var(--dmv-blue);
+  box-shadow: 0 0 0 2px rgba(30, 90, 158, 0.2);
+}
+
+.dmv-label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--dmv-text);
+  margin-bottom: 4px;
+}
+
+.dmv-required::after {
+  content: ' *';
+  color: var(--dmv-red);
 }
 
 /* ==============================
    TABLES
    ============================== */
 
-.portal-table {
+.dmv-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 11px;
+  font-size: 12px;
 }
 
-.portal-table th {
-  background: var(--portal-blue-dark);
-  color: rgba(255,255,255,0.85);
-  padding: 9px 14px;
+.dmv-table th {
+  background: linear-gradient(to bottom, var(--dmv-blue-light), var(--dmv-blue));
+  color: white;
+  padding: 8px 12px;
   text-align: left;
-  font-size: 9px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-weight: 500;
-  border: 1px solid var(--portal-blue-dark);
+  font-size: 12px;
+  border: 1px solid var(--dmv-blue-dark);
 }
 
-.portal-table td {
-  padding: 10px 14px;
-  border: 1px solid var(--portal-border);
-  vertical-align: middle;
+.dmv-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--dmv-border);
 }
 
-.portal-table tbody tr {
-  transition: background 0.1s;
+.dmv-table tbody tr:nth-child(odd) {
+  background: #f5f5f5;
 }
 
-.portal-table tbody tr:nth-child(even) {
-  background: rgba(0,0,0,0.015);
-}
-
-.portal-table tbody tr:hover {
-  background: var(--portal-info-bg);
+.dmv-table tbody tr:hover {
+  background: #ffffcc;
 }
 
 /* ==============================
-   NOTICE / ALERT SYSTEM
+   NOTICE SYSTEM (V2 style)
    ============================== */
 
-.portal-notice {
+.dmv-notice {
   padding: 10px 14px;
-  margin: 14px 0;
-  font-size: 11px;
-  border-left: 3px solid var(--portal-warning-border);
-  background: var(--portal-warning-bg);
+  margin: 12px 0;
+  font-size: 12px;
+  border-left: 4px solid #d4a017;
+  background: #fef9e7;
 }
 
-.portal-notice-danger {
-  border-left-color: var(--portal-red);
-  background: var(--portal-danger-bg);
+.dmv-notice-danger {
+  border-left-color: var(--dmv-red);
+  background: #fdf2f2;
 }
 
-.portal-notice-info {
-  border-left-color: var(--portal-blue);
-  background: var(--portal-info-bg);
+.dmv-notice-info {
+  border-left-color: var(--dmv-blue);
+  background: #eef4fb;
 }
 
-.portal-notice-success {
-  border-left-color: var(--portal-success);
+.dmv-notice-success {
+  border-left-color: var(--dmv-success);
   background: #f0faf0;
 }
 
-.portal-notice strong {
-  font-weight: 600;
+.dmv-notice strong {
+  font-weight: bold;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.5px;
 }
 
 /* ==============================
-   STATUS BADGES
+   STATUS BADGES (V2 style)
    ============================== */
 
-.portal-status {
+.dmv-status {
   display: inline-block;
   padding: 2px 8px;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 10px;
+  font-weight: bold;
   text-transform: uppercase;
-  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.5px;
 }
 
-.portal-status-cleared {
+.dmv-status-cleared {
   background: #e8f5e9;
   color: #1b5e20;
   border: 1px solid #a5d6a7;
 }
 
-.portal-status-pending {
-  background: var(--portal-warning-bg);
+.dmv-status-pending {
+  background: #fef9e7;
   color: #8a6d00;
-  border: 1px solid var(--portal-warning-border);
+  border: 1px solid #d4a017;
 }
 
-.portal-status-paid {
+.dmv-status-paid {
   background: #e8f5e9;
   color: #1b5e20;
   border: 1px solid #a5d6a7;
 }
 
-.portal-status-shipped {
-  background: var(--portal-info-bg);
-  color: var(--portal-blue-dark);
-  border: 1px solid var(--portal-blue-muted);
+.dmv-status-shipped {
+  background: #eef4fb;
+  color: var(--dmv-blue-dark);
+  border: 1px solid var(--dmv-blue-light);
 }
 
-.portal-status-delivered {
-  background: var(--portal-bg-warm);
-  color: var(--portal-text-muted);
-  border: 1px solid var(--portal-border);
+.dmv-status-delivered {
+  background: #e8e8e8;
+  color: #666;
+  border: 1px solid #999;
 }
 
-.portal-status-cancelled {
-  background: var(--portal-danger-bg);
-  color: var(--portal-red);
-  border: 1px solid var(--portal-red-muted);
+.dmv-status-cancelled {
+  background: #fdf2f2;
+  color: var(--dmv-red);
+  border: 1px solid #dc4a4a;
 }
 
-.portal-status-restricted {
-  background: var(--portal-danger-bg);
-  color: var(--portal-red);
-  border: 1px solid var(--portal-red-muted);
+.dmv-status-restricted {
+  background: #fdf2f2;
+  color: var(--dmv-red);
+  border: 1px solid #dc4a4a;
 }
 
-.portal-status-withheld {
-  background: var(--portal-bg-warm);
-  color: var(--portal-text-muted);
-  border: 1px solid var(--portal-border);
+.dmv-status-withheld {
+  background: #e8e8e8;
+  color: #666;
+  border: 1px solid #999;
 }
 
 /* ==============================
    FOOTER
    ============================== */
 
-.portal-footer {
-  background: var(--portal-blue-dark);
-  color: rgba(255,255,255,0.5);
-  padding: 24px 0;
-  margin-top: auto;
-  font-size: 9px;
-  letter-spacing: 1px;
+.dmv-footer {
+  background: var(--dmv-blue);
+  color: white;
+  padding: 20px 0;
+  margin-top: 40px;
+  font-size: 11px;
   text-align: center;
 }
 
-.portal-footer a {
-  color: rgba(255,255,255,0.6);
-  margin: 0 14px;
-  border-bottom: none;
-  transition: color 0.15s;
-}
-
-.portal-footer a:hover {
+.dmv-footer a {
   color: white;
-  border-bottom: none;
+  text-decoration: underline;
+  margin: 0 12px;
 }
 
-.portal-footer-divider {
-  width: 60px;
+.dmv-footer a:visited { color: white; }
+
+.dmv-footer-copyright {
+  padding-top: 10px;
+  border-top: 1px solid var(--dmv-blue-light);
+  margin-top: 10px;
+}
+
+/* ==============================
+   UTILITY
+   ============================== */
+
+.dmv-field {
+  margin-bottom: 16px;
+}
+
+.dmv-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.dmv-divider {
   height: 1px;
-  background: rgba(255,255,255,0.1);
-  margin: 14px auto;
+  background: var(--dmv-border);
+  margin: 20px 0;
+}
+
+.dmv-ref {
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--dmv-grey-dark);
+}
+
+.dmv-breadcrumb {
+  font-size: 12px;
+  color: var(--dmv-grey-dark);
+  margin-bottom: 12px;
+}
+
+.dmv-breadcrumb a { color: var(--dmv-link); }
+.dmv-breadcrumb span { margin: 0 6px; color: #999; }
+
+.dmv-link-button {
+  background: none;
+  border: none;
+  color: var(--dmv-link);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.dmv-link-button:hover {
+  color: var(--dmv-blue-dark);
 }
 
 /* ==============================
@@ -497,80 +458,12 @@ a:hover {
    ============================== */
 
 @media (max-width: 768px) {
-  .portal-header-inner {
+  .dmv-header-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
   }
 
-  .portal-header-ref { text-align: left; }
-
-  .portal-nav-inner {
-    flex-wrap: wrap;
-  }
-
-  .portal-nav a {
-    padding: 8px 14px;
-    font-size: 9px;
-  }
-
-  .portal-grid-2 {
-    grid-template-columns: 1fr !important;
-  }
-
-  .portal-table {
-    font-size: 10px;
-  }
-
-  .portal-table th,
-  .portal-table td {
-    padding: 6px 8px;
-  }
-}
-
-/* ==============================
-   UTILITY
-   ============================== */
-
-.portal-grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.portal-mono {
-  font-family: 'IBM Plex Mono', monospace;
-}
-
-.portal-serif {
-  font-family: 'Source Serif 4', Georgia, serif;
-}
-
-.portal-ref {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 1px;
-  color: var(--portal-text-faint);
-}
-
-.portal-divider {
-  height: 1px;
-  background: var(--portal-border);
-  margin: 20px 0;
-}
-
-.portal-breadcrumb {
-  font-size: 10px;
-  color: var(--portal-text-faint);
-  margin-bottom: 16px;
-  letter-spacing: 0.5px;
-}
-
-.portal-breadcrumb a {
-  color: var(--portal-text-muted);
-}
-
-.portal-breadcrumb span {
-  margin: 0 6px;
-  color: var(--portal-border-dark);
+  .dmv-nav-inner { flex-wrap: wrap; }
+  .dmv-nav a { padding: 8px 14px; font-size: 11px; }
+  .dmv-row { grid-template-columns: 1fr !important; }
 }

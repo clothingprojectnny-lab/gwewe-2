@@ -12,8 +12,8 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
   return (
     <>
-      <nav className="portal-nav">
-        <div className="portal-nav-inner">
+      <nav className="dmv-nav">
+        <div className="dmv-nav-inner">
           <Link href="/shop">Catalogue</Link>
           <Link href="#">Records</Link>
           <Link href="#">Access Log</Link>
@@ -23,11 +23,11 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         </div>
       </nav>
 
-      <div className="portal-container">
-        <div className="portal-breadcrumb">
+      <div className="dmv-container">
+        <div className="dmv-breadcrumb">
           <Link href="/shop">Catalogue</Link>
           <span>›</span>
-          <span style={{ color: 'var(--portal-text-muted)' }}>Item Record — {product.name}</span>
+          <span style={{ color: 'var(--dmv-grey-dark)' }}>Item Record — {product.name}</span>
         </div>
 
         <ProductClient product={product} />

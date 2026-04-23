@@ -33,31 +33,31 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="portal-container" style={{ maxWidth: 440, margin: '40px auto' }}>
-      <div className="portal-card">
-        <div className="portal-card-header">
+    <div className="dmv-container" style={{ maxWidth: 440, margin: '40px auto' }}>
+      <div className="dmv-card">
+        <div className="dmv-card-header">
           <h2>Administrator Access</h2>
         </div>
-        <div className="portal-card-body">
-          <div className="portal-notice portal-notice-danger">
+        <div className="dmv-card-body">
+          <div className="dmv-notice dmv-notice-danger">
             <strong>Restricted:</strong> This portal is for authorised personnel only.
             All access attempts are logged.
           </div>
 
           <form onSubmit={handleSubmit}>
-            <div className="portal-field">
-              <label className="portal-label portal-label-required">Administrator Password</label>
+            <div className="dmv-field">
+              <label className="dmv-label dmv-required">Administrator Password</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autoFocus
-                className="portal-input"
+                className="dmv-input"
               />
             </div>
 
             {error && (
-              <div className="portal-notice portal-notice-danger" style={{ fontSize: 10 }}>
+              <div className="dmv-notice dmv-notice-danger" style={{ fontSize: 10 }}>
                 <strong>Authentication Failed:</strong> {error}
               </div>
             )}
@@ -65,7 +65,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading || !password}
-              className="portal-btn portal-btn-primary"
+              className="dmv-button dmv-button-primary"
               style={{ width: '100%' }}
             >
               {loading ? 'Verifying...' : 'Enter →'}

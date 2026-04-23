@@ -43,8 +43,8 @@ export default function CheckoutPage() {
 
   return (
     <>
-      <nav className="portal-nav">
-        <div className="portal-nav-inner">
+      <nav className="dmv-nav">
+        <div className="dmv-nav-inner">
           <Link href="/shop">Catalogue</Link>
           <Link href="#">Records</Link>
           <Link href="#">Access Log</Link>
@@ -54,56 +54,56 @@ export default function CheckoutPage() {
         </div>
       </nav>
 
-      <div className="portal-container">
-        <div className="portal-breadcrumb">
+      <div className="dmv-container">
+        <div className="dmv-breadcrumb">
           <Link href="/shop">Catalogue</Link>
           <span>›</span>
-          <span style={{ color: 'var(--portal-text-muted)' }}>Fulfilment Details</span>
+          <span style={{ color: 'var(--dmv-grey-dark)' }}>Fulfilment Details</span>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 20 }} className="portal-grid-2">
-          <div className="portal-card">
-            <div className="portal-card-header">
+        <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 20 }} className="dmv-row">
+          <div className="dmv-card">
+            <div className="dmv-card-header">
               <h2>Fulfilment Details</h2>
             </div>
-            <div className="portal-card-body">
-              <div className="portal-notice">
+            <div className="dmv-card-body">
+              <div className="dmv-notice">
                 <strong>Required:</strong> Complete all fields marked ✱ to process this order.
               </div>
 
               <form onSubmit={handleSubmit}>
-                <div className="portal-field">
-                  <label className="portal-label portal-label-required">Recipient Name</label>
-                  <input type="text" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required className="portal-input" />
+                <div className="dmv-field">
+                  <label className="dmv-label dmv-required">Recipient Name</label>
+                  <input type="text" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required className="dmv-input" />
                 </div>
 
-                <div className="portal-field">
-                  <label className="portal-label portal-label-required">Email Address</label>
-                  <input type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} required className="portal-input" />
+                <div className="dmv-field">
+                  <label className="dmv-label dmv-required">Email Address</label>
+                  <input type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} required className="dmv-input" />
                 </div>
 
-                <div className="portal-field">
-                  <label className="portal-label portal-label-required">Dispatch Address</label>
-                  <input type="text" value={form.address} onChange={e => setForm(f => ({ ...f, address: e.target.value }))} required className="portal-input" />
+                <div className="dmv-field">
+                  <label className="dmv-label dmv-required">Dispatch Address</label>
+                  <input type="text" value={form.address} onChange={e => setForm(f => ({ ...f, address: e.target.value }))} required className="dmv-input" />
                 </div>
 
-                <div className="portal-grid-2">
-                  <div className="portal-field">
-                    <label className="portal-label portal-label-required">City</label>
-                    <input type="text" value={form.city} onChange={e => setForm(f => ({ ...f, city: e.target.value }))} required className="portal-input" />
+                <div className="dmv-row">
+                  <div className="dmv-field">
+                    <label className="dmv-label dmv-required">City</label>
+                    <input type="text" value={form.city} onChange={e => setForm(f => ({ ...f, city: e.target.value }))} required className="dmv-input" />
                   </div>
-                  <div className="portal-field">
-                    <label className="portal-label portal-label-required">ZIP / Postcode</label>
-                    <input type="text" value={form.postcode} onChange={e => setForm(f => ({ ...f, postcode: e.target.value }))} required className="portal-input" />
+                  <div className="dmv-field">
+                    <label className="dmv-label dmv-required">ZIP / Postcode</label>
+                    <input type="text" value={form.postcode} onChange={e => setForm(f => ({ ...f, postcode: e.target.value }))} required className="dmv-input" />
                   </div>
                 </div>
 
-                <div className="portal-field">
-                  <label className="portal-label">Country</label>
-                  <input type="text" value={form.country} onChange={e => setForm(f => ({ ...f, country: e.target.value }))} className="portal-input" />
+                <div className="dmv-field">
+                  <label className="dmv-label">Country</label>
+                  <input type="text" value={form.country} onChange={e => setForm(f => ({ ...f, country: e.target.value }))} className="dmv-input" />
                 </div>
 
-                <div className="portal-notice portal-notice-info">
+                <div className="dmv-notice dmv-notice-info">
                   <strong>Payment Method:</strong> Payment is accepted through the approved network
                   listed at checkout. Order processing begins after confirmation.
                 </div>
@@ -111,7 +111,7 @@ export default function CheckoutPage() {
                 <button
                   type="submit"
                   disabled={loading || cart.length === 0}
-                  className="portal-btn portal-btn-primary"
+                  className="dmv-button dmv-button-primary"
                   style={{ width: '100%', padding: '10px', fontSize: 11 }}
                 >
                   {loading ? 'Processing...' : 'Submit Order & Pay →'}
@@ -121,16 +121,16 @@ export default function CheckoutPage() {
           </div>
 
           {/* Order summary */}
-          <div className="portal-card">
-            <div className="portal-card-header">
+          <div className="dmv-card">
+            <div className="dmv-card-header">
               <h2>Order Summary</h2>
             </div>
-            <div className="portal-card-body">
+            <div className="dmv-card-body">
               {cart.length === 0 ? (
-                <p style={{ fontSize: 11, color: 'var(--portal-text-faint)' }}>No items pending.</p>
+                <p style={{ fontSize: 11, color: 'var(--dmv-grey-dark)' }}>No items pending.</p>
               ) : (
                 <>
-                  <table className="portal-table">
+                  <table className="dmv-table">
                     <thead>
                       <tr>
                         <th>Item</th>
@@ -153,8 +153,8 @@ export default function CheckoutPage() {
                     display: 'flex',
                     justifyContent: 'space-between',
                     padding: '12px 14px',
-                    background: 'var(--portal-bg)',
-                    border: '1px solid var(--portal-border)',
+                    background: 'var(--dmv-grey-light)',
+                    border: '1px solid var(--dmv-border)',
                     borderTop: 'none',
                     fontWeight: 600,
                     fontSize: 12,
@@ -163,7 +163,7 @@ export default function CheckoutPage() {
                     <span>${(total / 100).toFixed(2)}</span>
                   </div>
 
-                  <div className="portal-notice" style={{ marginTop: 14, fontSize: 10 }}>
+                  <div className="dmv-notice" style={{ marginTop: 14, fontSize: 10 }}>
                     Dispatch details will be issued by email following payment verification.
                   </div>
                 </>

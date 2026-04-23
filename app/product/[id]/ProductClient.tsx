@@ -25,19 +25,19 @@ export default function ProductClient({ product }: { product: Product }) {
   }
 
   return (
-    <div className="portal-card">
-      <div className="portal-card-header">
+    <div className="dmv-card">
+      <div className="dmv-card-header">
         <h2>Item Record — {product.name}</h2>
       </div>
-      <div className="portal-card-body">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }} className="portal-grid-2">
+      <div className="dmv-card-body">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }} className="dmv-row">
           {/* Image gallery */}
           <div>
             <div style={{
               width: '100%',
               aspectRatio: '3/4',
-              background: 'var(--portal-bg)',
-              border: '1px solid var(--portal-border)',
+              background: 'var(--dmv-grey-light)',
+              border: '1px solid var(--dmv-border)',
               overflow: 'hidden',
             }}>
               {product.images?.[mainImage] && (
@@ -58,8 +58,8 @@ export default function ProductClient({ product }: { product: Product }) {
                     style={{
                       aspectRatio: '1',
                       padding: 0,
-                      border: mainImage === i ? '2px solid var(--portal-blue)' : '1px solid var(--portal-border)',
-                      background: 'var(--portal-card)',
+                      border: mainImage === i ? '2px solid var(--dmv-blue)' : '1px solid var(--dmv-border)',
+                      background: 'var(--dmv-card)',
                       cursor: 'pointer',
                       overflow: 'hidden',
                     }}
@@ -74,47 +74,47 @@ export default function ProductClient({ product }: { product: Product }) {
 
           {/* Item details */}
           <div>
-            <table className="portal-table" style={{ marginBottom: 20 }}>
+            <table className="dmv-table" style={{ marginBottom: 20 }}>
               <tbody>
                 <tr>
-                  <td style={{ fontWeight: 600, width: 150, background: 'var(--portal-bg)' }}>Issue Reference</td>
-                  <td className="portal-ref" style={{ fontSize: 12 }}>{product.id.toUpperCase()}</td>
+                  <td style={{ fontWeight: 600, width: 150, background: 'var(--dmv-grey-light)' }}>Issue Reference</td>
+                  <td className="dmv-ref" style={{ fontSize: 12 }}>{product.id.toUpperCase()}</td>
                 </tr>
                 <tr>
-                  <td style={{ fontWeight: 600, background: 'var(--portal-bg)' }}>Item Description</td>
+                  <td style={{ fontWeight: 600, background: 'var(--dmv-grey-light)' }}>Item Description</td>
                   <td style={{ fontWeight: 600 }}>{product.name}</td>
                 </tr>
                 <tr>
-                  <td style={{ fontWeight: 600, background: 'var(--portal-bg)' }}>Declared Value</td>
+                  <td style={{ fontWeight: 600, background: 'var(--dmv-grey-light)' }}>Declared Value</td>
                   <td style={{ fontWeight: 600, fontSize: 14 }}>${(product.price / 100).toFixed(2)}</td>
                 </tr>
                 <tr>
-                  <td style={{ fontWeight: 600, background: 'var(--portal-bg)' }}>Clearance Status</td>
+                  <td style={{ fontWeight: 600, background: 'var(--dmv-grey-light)' }}>Clearance Status</td>
                   <td>
                     {availableSizes.length > 0 ? (
-                      <span className="portal-status portal-status-cleared">Cleared</span>
+                      <span className="dmv-status dmv-status-cleared">Cleared</span>
                     ) : (
-                      <span className="portal-status portal-status-restricted">Access Restricted</span>
+                      <span className="dmv-status dmv-status-restricted">Access Restricted</span>
                     )}
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ fontWeight: 600, background: 'var(--portal-bg)' }}>Fulfilment Method</td>
-                  <td style={{ fontSize: 11, color: 'var(--portal-text-muted)' }}>Direct dispatch upon payment confirmation</td>
+                  <td style={{ fontWeight: 600, background: 'var(--dmv-grey-light)' }}>Fulfilment Method</td>
+                  <td style={{ fontSize: 11, color: 'var(--dmv-grey-dark)' }}>Direct dispatch upon payment confirmation</td>
                 </tr>
               </tbody>
             </table>
 
             {product.description && (
               <div style={{ marginBottom: 18 }}>
-                <div className="portal-label">Item Notes</div>
+                <div className="dmv-label">Item Notes</div>
                 <p style={{ fontSize: 11, whiteSpace: 'pre-wrap', lineHeight: 1.7 }}>{product.description}</p>
               </div>
             )}
 
             {/* Size selector */}
-            <div className="portal-field">
-              <label className="portal-label portal-label-required">Select Size</label>
+            <div className="dmv-field">
+              <label className="dmv-label dmv-required">Select Size</label>
               <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
                 {product.sizes.map(size => {
                   const available = availableSizes.includes(size)
@@ -123,13 +123,13 @@ export default function ProductClient({ product }: { product: Product }) {
                       key={size}
                       onClick={() => available && setSelectedSize(size)}
                       disabled={!available}
-                      className="portal-btn"
+                      className="dmv-button"
                       style={{
                         minWidth: 48,
                         textAlign: 'center',
                         ...(selectedSize === size ? {
-                          background: 'var(--portal-blue-dark)',
-                          borderColor: 'var(--portal-blue-dark)',
+                          background: 'var(--dmv-blue-dark)',
+                          borderColor: 'var(--dmv-blue-dark)',
                           color: 'white',
                         } : {}),
                         ...(!available ? {
@@ -148,13 +148,13 @@ export default function ProductClient({ product }: { product: Product }) {
             <button
               onClick={handleAddToCart}
               disabled={!selectedSize}
-              className="portal-btn portal-btn-primary"
+              className="dmv-button dmv-button-primary"
               style={{ width: '100%', padding: '10px', fontSize: 11, marginTop: 8 }}
             >
               Proceed to Checkout →
             </button>
 
-            <div className="portal-notice portal-notice-info" style={{ marginTop: 16 }}>
+            <div className="dmv-notice dmv-notice-info" style={{ marginTop: 16 }}>
               This garment has been cleared for current issue.
               Availability may be withdrawn without notice.
             </div>
@@ -162,13 +162,13 @@ export default function ProductClient({ product }: { product: Product }) {
             {/* Additional info */}
             {(product.sizeChart || product.materials || product.care) && (
               <div style={{ marginTop: 20 }}>
-                <div className="portal-divider" />
-                <div className="portal-label" style={{ marginBottom: 10 }}>Supplementary Data</div>
-                <table className="portal-table">
+                <div className="dmv-divider" />
+                <div className="dmv-label" style={{ marginBottom: 10 }}>Supplementary Data</div>
+                <table className="dmv-table">
                   <tbody>
                     {product.sizeChart && (
                       <tr>
-                        <td style={{ fontWeight: 600, width: 140, background: 'var(--portal-bg)', verticalAlign: 'top' }}>
+                        <td style={{ fontWeight: 600, width: 140, background: 'var(--dmv-grey-light)', verticalAlign: 'top' }}>
                           Size Reference
                         </td>
                         <td style={{ whiteSpace: 'pre-wrap', fontSize: 10 }}>{product.sizeChart}</td>
@@ -176,7 +176,7 @@ export default function ProductClient({ product }: { product: Product }) {
                     )}
                     {product.materials && (
                       <tr>
-                        <td style={{ fontWeight: 600, background: 'var(--portal-bg)', verticalAlign: 'top' }}>
+                        <td style={{ fontWeight: 600, background: 'var(--dmv-grey-light)', verticalAlign: 'top' }}>
                           Composition
                         </td>
                         <td style={{ whiteSpace: 'pre-wrap', fontSize: 10 }}>{product.materials}</td>
@@ -184,7 +184,7 @@ export default function ProductClient({ product }: { product: Product }) {
                     )}
                     {product.care && (
                       <tr>
-                        <td style={{ fontWeight: 600, background: 'var(--portal-bg)', verticalAlign: 'top' }}>
+                        <td style={{ fontWeight: 600, background: 'var(--dmv-grey-light)', verticalAlign: 'top' }}>
                           Handling Notes
                         </td>
                         <td style={{ whiteSpace: 'pre-wrap', fontSize: 10 }}>{product.care}</td>

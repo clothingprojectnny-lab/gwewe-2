@@ -7,30 +7,25 @@ export const metadata: Metadata = {
   description: '',
   robots: { index: false, follow: false },
 }
- 
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <div className="portal-page">
-          <div className="portal-classification-bar">
-            Restricted Access · Authorised Personnel Only · GWEWE Portal System
-          </div>
-          <header className="portal-header">
-            <div className="portal-header-inner">
+        <div className="dmv-page">
+          <div className="dmv-top-bar" />
+          <header className="dmv-header">
+            <div className="dmv-header-inner">
               <div>
-                <a href="/shop" className="portal-logo">GWEWE</a>
-                <span className="portal-logo-sub">Member Access Services</span>
-              </div>
-              <div className="portal-header-ref">
-                Portal Ref: GW-MMXXVI<br />
-                System Status: Active
+                <a href="/shop" className="dmv-logo">
+                  GWEWE<span className="dmv-logo-sub">PORTAL</span>
+                </a>
+                <div className="dmv-tagline">MEMBER ACCESS SERVICES · EST. MMXXVI</div>
               </div>
             </div>
           </header>
-          <div className="portal-accent-bar" />
           {children}
-          <footer className="portal-footer">
+          <footer className="dmv-footer">
             <div>
               <a href="/shop">Catalogue</a>
               <a href="/enter">Access Portal</a>
@@ -38,9 +33,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="#">Privacy</a>
               <a href="#">Contact</a>
             </div>
-            <div className="portal-footer-divider" />
-            <div>
-              GWEWE PORTAL SYSTEM · EST. MMXXVI · ALL RIGHTS RESERVED
+            <div className="dmv-footer-copyright">
+              Copyright © MMXXVI · GWEWE Portal System · All Rights Reserved
             </div>
           </footer>
         </div>

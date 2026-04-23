@@ -9,8 +9,8 @@ export default function AdminNav() {
   if (pathname === '/admin/login') return null
 
   return (
-    <nav className="portal-nav">
-      <div className="portal-nav-inner">
+    <nav className="dmv-nav">
+      <div className="dmv-nav-inner">
         <Link href="/admin/products" className={pathname?.startsWith('/admin/products') ? 'active' : ''}>
           Products
         </Link>

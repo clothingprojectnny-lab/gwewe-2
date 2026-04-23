@@ -8,8 +8,8 @@ export default async function ShopPage() {
 
   return (
     <>
-      <nav className="portal-nav">
-        <div className="portal-nav-inner">
+      <nav className="dmv-nav">
+        <div className="dmv-nav-inner">
           <Link href="/shop" className="active">Catalogue</Link>
           <Link href="#">Records</Link>
           <Link href="#">Access Log</Link>
@@ -19,28 +19,28 @@ export default async function ShopPage() {
         </div>
       </nav>
 
-      <div className="portal-container">
-        <div className="portal-card">
-          <div className="portal-card-header">
+      <div className="dmv-container">
+        <div className="dmv-card">
+          <div className="dmv-card-header">
             <h2>Current Issue Catalogue</h2>
           </div>
-          <div className="portal-card-body">
-            <div className="portal-notice">
+          <div className="dmv-card-body">
+            <div className="dmv-notice">
               <strong>Notice:</strong> Item availability is subject to change without notice.
               Prices are listed in USD unless otherwise stated.
             </div>
 
             {products.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '60px 20px' }}>
-                <p style={{ fontSize: 13, color: 'var(--portal-text-muted)', marginBottom: 6 }}>
+                <p style={{ fontSize: 13, color: 'var(--dmv-grey-dark)', marginBottom: 6 }}>
                   No items currently issued.
                 </p>
-                <p style={{ fontSize: 11, color: 'var(--portal-text-faint)' }}>
+                <p style={{ fontSize: 11, color: 'var(--dmv-grey-dark)' }}>
                   Check back for future releases.
                 </p>
               </div>
             ) : (
-              <table className="portal-table" style={{ marginTop: 16 }}>
+              <table className="dmv-table" style={{ marginTop: 16 }}>
                 <thead>
                   <tr>
                     <th style={{ width: 90 }}>Image</th>
@@ -61,8 +61,8 @@ export default async function ShopPage() {
                             <div style={{
                               width: 70,
                               height: 90,
-                              background: 'var(--portal-bg)',
-                              border: '1px solid var(--portal-border)',
+                              background: 'var(--dmv-grey-light)',
+                              border: '1px solid var(--dmv-border)',
                               overflow: 'hidden',
                             }}>
                               {product.images?.[0] && (
@@ -73,16 +73,16 @@ export default async function ShopPage() {
                           </Link>
                         </td>
                         <td>
-                          <Link href={`/product/${product.id}`} style={{ fontWeight: 600, fontSize: 12, color: 'var(--portal-text)' }}>
+                          <Link href={`/product/${product.id}`} style={{ fontWeight: 600, fontSize: 12, color: 'var(--dmv-text)' }}>
                             {product.name}
                           </Link>
                           {product.description && (
-                            <div style={{ fontSize: 10, color: 'var(--portal-text-faint)', marginTop: 3, lineHeight: 1.4 }}>
+                            <div style={{ fontSize: 10, color: 'var(--dmv-grey-dark)', marginTop: 3, lineHeight: 1.4 }}>
                               {product.description.substring(0, 80)}{product.description.length > 80 ? '...' : ''}
                             </div>
                           )}
                         </td>
-                        <td className="portal-ref">
+                        <td className="dmv-ref">
                           {product.id.toUpperCase()}
                         </td>
                         <td style={{ fontWeight: 600 }}>
@@ -90,13 +90,13 @@ export default async function ShopPage() {
                         </td>
                         <td>
                           {totalStock > 0 ? (
-                            <span className="portal-status portal-status-cleared">Cleared</span>
+                            <span className="dmv-status dmv-status-cleared">Cleared</span>
                           ) : (
-                            <span className="portal-status portal-status-restricted">Restricted</span>
+                            <span className="dmv-status dmv-status-restricted">Restricted</span>
                           )}
                         </td>
                         <td>
-                          <Link href={`/product/${product.id}`} className="portal-btn" style={{ fontSize: 9, padding: '5px 12px' }}>
+                          <Link href={`/product/${product.id}`} className="dmv-button" style={{ fontSize: 9, padding: '5px 12px' }}>
                             Open Record
                           </Link>
                         </td>

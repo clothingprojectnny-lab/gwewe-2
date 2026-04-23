@@ -59,8 +59,8 @@ export default function ApplyModal({
       <div
         onClick={e => e.stopPropagation()}
         style={{
-          background: 'var(--portal-card)',
-          border: '1px solid var(--portal-border)',
+          background: 'var(--dmv-card)',
+          border: '1px solid var(--dmv-border)',
           maxWidth: 440,
           width: '100%',
           boxShadow: '0 8px 40px rgba(0,0,0,0.2)',
@@ -68,7 +68,7 @@ export default function ApplyModal({
       >
         {/* Title bar */}
         <div style={{
-          background: 'var(--portal-blue-dark)',
+          background: 'var(--dmv-blue-dark)',
           color: 'rgba(255,255,255,0.8)',
           padding: '8px 16px',
           display: 'flex',
@@ -100,15 +100,15 @@ export default function ApplyModal({
         <div style={{ padding: 24 }}>
           {status === 'success' ? (
             <div>
-              <div className="portal-label" style={{ marginBottom: 12, fontSize: 12 }}>
+              <div className="dmv-label" style={{ marginBottom: 12, fontSize: 12 }}>
                 Application Received
               </div>
-              <div className="portal-notice portal-notice-success">
+              <div className="dmv-notice dmv-notice-success">
                 <strong>Submitted.</strong> If approved, authorisation details will be issued by email.
               </div>
               <button
                 onClick={handleClose}
-                className="portal-btn"
+                className="dmv-button"
                 style={{ width: '100%', marginTop: 14 }}
               >
                 Close
@@ -120,51 +120,51 @@ export default function ApplyModal({
                 fontFamily: 'Source Serif 4, Georgia, serif',
                 fontSize: 16,
                 fontWeight: 600,
-                color: 'var(--portal-blue-dark)',
+                color: 'var(--dmv-blue-dark)',
                 marginBottom: 12,
               }}>
                 Apply for Consideration
               </div>
 
-              <p style={{ fontSize: 11, marginBottom: 18, color: 'var(--portal-text-muted)', lineHeight: 1.7 }}>
+              <p style={{ fontSize: 11, marginBottom: 18, color: 'var(--dmv-grey-dark)', lineHeight: 1.7 }}>
                 Portal access is not publicly available. Applications are reviewed periodically.
                 Approved applicants may receive authorisation for future drops, archive releases,
                 and member communications.
               </p>
 
-              <div className="portal-field">
-                <label className="portal-label portal-label-required">Email Address</label>
+              <div className="dmv-field">
+                <label className="dmv-label dmv-required">Email Address</label>
                 <input
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   required
                   autoFocus
-                  className="portal-input"
+                  className="dmv-input"
                 />
               </div>
 
               {status === 'error' && (
-                <div className="portal-notice portal-notice-danger" style={{ fontSize: 10 }}>
+                <div className="dmv-notice dmv-notice-danger" style={{ fontSize: 10 }}>
                   <strong>Error:</strong> Unable to process application. Try again.
                 </div>
               )}
 
               <div style={{ display: 'flex', gap: 8, marginTop: 16 }}>
-                <button type="button" onClick={handleClose} className="portal-btn" style={{ flex: 1 }}>
+                <button type="button" onClick={handleClose} className="dmv-button" style={{ flex: 1 }}>
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={status === 'loading' || !email}
-                  className="portal-btn portal-btn-primary"
+                  className="dmv-button dmv-button-primary"
                   style={{ flex: 2 }}
                 >
                   {status === 'loading' ? 'Submitting...' : 'Submit for Review'}
                 </button>
               </div>
 
-              <p style={{ fontSize: 9, color: 'var(--portal-text-faint)', marginTop: 14, textAlign: 'center', letterSpacing: 0.3 }}>
+              <p style={{ fontSize: 9, color: 'var(--dmv-grey-dark)', marginTop: 14, textAlign: 'center', letterSpacing: 0.3 }}>
                 By submitting, you consent to receive access-related communications from GWEWE.
               </p>
             </form>
